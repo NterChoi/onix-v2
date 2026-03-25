@@ -35,3 +35,20 @@ trigger: always_on
 ## 4. 에이전트의 역할 (Agent's Duty)
 - 코드를 완성한 후, 해당 로직에서 성능 최적화나 아키텍처적 고민이 있었다면 요약해서 브리핑해준다.
 - 사용자가 "이거 기록해줘"라고 하면, 위 템플릿에 맞춰 마크다운 초안을 작성해준다.
+- **세션 마무리 시**, 오늘 나눈 Q&A, 트러블슈팅, 학습 내용을 자동으로 Obsidian에 저장한다.
+
+## 5. Obsidian 볼트 저장 규칙 (Vault Routing)
+
+**볼트 경로**: `/Users/nterchoi/Documents/Exocortex`
+
+### 폴더 라우팅 기준
+
+| 내용 유형 | 저장 폴더 | 파일명 패턴 |
+|---|---|---|
+| 구현 작업 로그, Q&A, 설계 근거 | `10_Projects/Onix Project/04_worklog/` | `YYYY-MM-DD-{주제}.md` |
+| 에러 해결 과정 (트러블슈팅) | `10_Projects/Onix Project/03_Trobleshooting/` | `{에러주제_PascalCase}.md` |
+| 순수 개념 학습 (Docker, TypeORM 등) | `20_Areas/TIL/` | `YYYY-MM-DD_{주제}.md` |
+
+### 저장 시점
+- 사용자가 명시적으로 "기록해줘" / "저장해줘" 라고 요청할 때
+- 세션에서 트러블슈팅이 있었던 경우, 세션 마무리 시 자동 제안
