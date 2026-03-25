@@ -37,6 +37,9 @@ lerna-debug.log*
 
 # dotenv environment variable files
 .env
+
+# AI agent rules (personal config)
+.agents/
 .env.development.local
 .env.test.local
 .env.production.local
