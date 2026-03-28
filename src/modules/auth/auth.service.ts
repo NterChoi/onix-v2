@@ -45,9 +45,10 @@ export class AuthService {
             throw new UnauthorizedException('비밀번호가 일치하지 않습니다.');
         }
         // 3. 서명된 JWT 토큰 생성 (this.jwtService.sign(payload) 사용)
-        const token = this.jwtService.sign(dto);
-        // payload 구조 추천 { sub: user.id, email: user.email }
         const payload = { sub: user.id, email: user.email }
+        const token = this.jwtService.sign(payload);
+        // payload 구조 추천 { sub: user.id, email: user.email }
+
         // 4. 토큰 리턴
         return {
             accessToken: token,
