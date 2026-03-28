@@ -7,10 +7,11 @@ import { typeOrmConfig } from './config/typeorm.config';
 import { UsersModule } from './modules/users/users.module';
 import { AuthModule } from './modules/auth/auth.module';
 import authConfig from './config/auth.config';
+import databaseConfig from './config/database.config';
 
 @Module({
   imports: [
-    ConfigModule.forRoot({ isGlobal: true, load: [authConfig] },),
+    ConfigModule.forRoot({ isGlobal: true, load: [authConfig, databaseConfig] },),
     TypeOrmModule.forRootAsync(typeOrmConfig),
     UsersModule,
     AuthModule,
