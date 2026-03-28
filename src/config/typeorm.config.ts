@@ -1,17 +1,18 @@
-import { ConfigService } from "@nestjs/config";
+import { ConfigService, ConfigType } from "@nestjs/config";
 import { TypeOrmModuleAsyncOptions } from "@nestjs/typeorm";
+import databaseConfig from "./database.config";
 
 export const typeOrmConfig: TypeOrmModuleAsyncOptions = {
-    inject: [ConfigService],
-    useFactory: (configService: ConfigService) => ({
+    inject: [databaseConfig.KEY],
+    useFactory: (config: ConfigType<typeof databaseConfig>) => ({
         type: 'mysql',
-        host: configService.get<string>('DB_HOST'),
-        port: configService.get<number>('DB_PORT'),
-        username: configService.get<string>('DB_USERNAME'),
-        password: configService.get<string>('DB_PASSWORD'),
-        database: configService.get<string>('DB_DATABASE'),
+        host: config.host,
+        port: config.port,
+        username: config.username,
+        password: config.password,
+        database: config.database,
         autoLoadEntities: true,
-        synchronize: false,
-        logging: configService.get<string>('NODE_ENV') === 'development',
+        synchronize: config.synchronize,
+        logging: config.logging,
     }),
 };
